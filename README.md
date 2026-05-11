@@ -7,38 +7,20 @@ Reproduire l'infrastructure réseau d'une PME avec 3 services distincts (RH, Fin
 
 🖧 Architecture réseau
 
-Internet
-    │
-    ▼
-┌─────────────────────────────────────┐
-│              pfSense                │
-│  WAN : 192.168.100.47 (em0 - NAT)   │
-│  LAN : 10.0.0.2       (em1)         │
-│  RH  : 10.0.10.1      (em2)         │
-│  Finance : 10.0.20.1  (em3)         │
-│  Info : 10.0.30.1     (em4)         │
-└─────────────────────────────────────┘
-    │           │           │         │
-    ▼           ▼           ▼         ▼
-Serveur AD  Réseau RH  Réseau Fin  Réseau Info
-10.0.0.10  10.0.10.x  10.0.20.x   10.0.30.x
+<img width="399" height="321" alt="image" src="https://github.com/user-attachments/assets/17699cbd-b7a8-428f-b061-018629e9fb37" />
+
+
+
 
 📁 Active Directory
 Domaine : pfsense.local
 Structure des OUs
-
 <img width="1026" height="778" alt="OU" src="https://github.com/user-attachments/assets/0a122503-3666-470d-b382-68beae3088f2" />
 
-pfsense.local
-├── Finance
-│   └── Groupe : finance
-│       └── Utilisateur : finance1
-├── RH
-│   └── Groupe : rh
-│       └── Utilisateur : rh1
-└── Informatique
-    └── Groupe : Technicien
-        └── Utilisateur : tech1
+
+
+<img width="235" height="210" alt="image" src="https://github.com/user-attachments/assets/cd649d2c-67a8-4dd7-9c18-664977ba918b" />
+
 
 Groupe RH
 <img width="1028" height="778" alt="RH" src="https://github.com/user-attachments/assets/555fe8c0-1732-4e97-aaa9-bb527544ed3d" />
@@ -53,16 +35,19 @@ Groupe Technicien
 🔌 pfSense — Interfaces & DHCP
 Interface Assignments
 
-
 <img width="1032" height="771" alt="pfsense gui" src="https://github.com/user-attachments/assets/2a48d053-1f63-49ae-bb1e-4edc47e4370b" />
+
+
 
 
 DHCP RH (10.0.10.50 → 10.0.10.150)
 <img width="1023" height="773" alt="RH pfsense" src="https://github.com/user-attachments/assets/250b6136-ceb5-4ae5-af20-1103cbd9a091" />
 
 
+
 DHCP Finance (10.0.20.50 → 10.0.20.150)
 <img width="1028" height="772" alt="finance pfsense" src="https://github.com/user-attachments/assets/113b9ae4-5140-4000-aa4c-799d21b2054a" />
+
 
 
 DHCP Technicien (10.0.30.50 → 10.0.30.150)
